@@ -1,2 +1,4 @@
-dumps/*
-parsed_dumps/*
+dumps/d*
+parsed_dumps/d*
+libpcap-1.1.1/*
+pcap_parse

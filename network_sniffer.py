@@ -16,7 +16,7 @@ raw_dump_dir = "./dumps"
 parsed_dump_dir = "./parsed_dumps"
 dump_name = "dump"
 command = "tcpdump -w %s -C 1" % dump_name
-
+bucket = "s3://metamx-james-selfserve/network_sniffing_aws/"
 
 try:
 
@@ -24,7 +24,6 @@ try:
 
 	os.system(" cd %s && sudo %s &" % (raw_dump_dir, command))
 	print "hello"
-	bucket = "s3://metamx-james-selfserve/network_sniffing/"
 
 	while True:
 		time.sleep(10)

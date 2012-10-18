@@ -63,7 +63,7 @@ main(int argc, char ** argv)
 		ether_type = ntohs (eth->ether_type);
 
 		millis = pkt_header->ts.tv_sec * 1000 + pkt_header->ts.tv_usec / 1000 ; 
-		printf("%llu,", millis);
+		printf("%"PRIu64",", millis);
 		printf("%x,", ether_type);
 
 		switch (ether_type)
@@ -107,13 +107,13 @@ main(int argc, char ** argv)
 					{
 						case 6: //TCP
 							tcp = (struct tcphdr *)((void *)ip4_hdr + ip_hdr_size);
-							src_port = ntohs(tcp->th_sport);
-							dst_port = ntohs(tcp->th_dport);
+							src_port = ntohs(tcp->source);
+							dst_port = ntohs(tcp->dest);
 							break;
 						case 17: //UDP
 							udp = (struct udphdr *)((void *)ip4_hdr + ip_hdr_size);
-							src_port = ntohs(udp->uh_sport);
-							dst_port = ntohs(udp->uh_dport);
+							src_port = ntohs(udp->source);
+							dst_port = ntohs(udp->dest);
 							break;
 						default:
 							break;
